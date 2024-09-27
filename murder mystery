@@ -1,0 +1,105 @@
+Code 1:
+SELECT * 
+FROM crime_scene_report
+LIMIT 5;
+
+Output:
+ 
+
+Code 2:
+SELECT *
+FROM crime_scene_report
+WHERE type = "murder";
+
+Code 3:
+SELECT *
+FROM crime_scene_report
+WHERE type = "murder"
+AND date = 20180115
+AND city = "SQL City";
+
+Output:
+ 
+
+Code 4:
+SELECT *
+FROM person
+LIMIT 5;
+
+Output:
+ 
+
+Code 5:
+SELECT *
+FROM person
+WHERE address_street_name = "Northwestern Dr"
+ORDER BY address_number DESC;
+
+14887	Morty Schapiro	118009	4919	Northwestern Dr	111564949
+Output:
+
+Code 6:
+SELECT *
+FROM person
+WHERE name LIKE '%Annabel%'
+AND address_street_name = "Franklin Ave";
+
+Output:
+ 
+
+Code 7:
+SELECT *
+FROM interview
+WHERE person_id IN ("14887", "16371");
+
+Output:
+ 
+
+
+So, here's our clues:
+•	Murderer is a man and a member of a gym called "Get Fit Now Gym" and has a gold membership no. starting from "48Z".
+•	He was working out at the gym on 9th Jan.
+•	He drives a car with car plate containing "H42W".
+
+
+Code 8:
+SELECT *
+FROM get_fit_now_check_in
+WHERE membership_id LIKE '48Z%'
+AND check_in_date = "20180109";
+
+Output:
+ 
+
+Code 9:
+SELECT *
+FROM drivers_license
+WHERE gender = "male"
+AND plate_number LIKE '%H42W%';
+
+
+
+
+Output:
+ 
+
+Code 10:
+SELECT *
+FROM person
+WHERE license_id IN ("423327", "664760");
+
+Output:
+ 
+
+Code 11:
+SELECT *
+FROM get_fit_now_member
+WHERE person_id IN ("51739", "67318");
+
+Output:
+ 
+Jeremy Bowers is the Murderer.
+
+THE FINAL SOLUTION
+ 
+
